@@ -1,0 +1,10 @@
+.footer {
+  background-color: #f7f7f7;
+  text-align: center;
+  color: #545454;
+}
+.footer__text {
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+}
