@@ -39,7 +39,7 @@ async function getGenres() {
 
 async function renderMovieCollection(movieCollection) {
   const genresList = await getGenres();
-
+  console.log(genresList);
   const markup = movieCollection
     .map(movie => {
       const genresInt = movie.genre_ids;
@@ -96,7 +96,7 @@ async function getFoundMovies(q) {
 }
 
 async function renderFoundMovies(movieSet) {
-  console.log(movieSet);
+  console.log('movieSet', movieSet);
   const genresList = await getGenres();
 
   const markup = movieSet
@@ -130,11 +130,11 @@ async function renderFoundMovies(movieSet) {
 //-------------------
 //------- show more info
 
-function showMovieInfo(event) {
+async function showMovieInfo(event) {
   const card = event.target.closest('.movie-card');
   if (card) {
     const id = card.getAttribute('id');
-    renderMovieInfoCard(getMovieById(id));
+    await renderMovieInfoCard(await getMovieById(id));
   }
 }
 
@@ -145,22 +145,37 @@ async function getMovieById(id) {
 
   const response = await fetch(url);
   const movieInfo = await response.json();
-  console.log(movieInfo);
+  console.log('movieInfo', movieInfo);
   return movieInfo;
 }
 
 function renderMovieInfoCard(movieInfo) {
+  console.log('movieInfo2', movieInfo);
   refs.backdrop.classList.remove('hidden');
+  const genres = movieInfo.genres.map(gen => gen.name).join(', ');
+  console.log(genres);
+  const markup = `
+  <div class="modal">
+    <button type="button" class="btn-close"></button>
+    <img class="modal__img" srcset="https://image.tmdb.org/t/p/w300${movieInfo.poster_path} 300w, https://image.tmdb.org/t/p/w500${movieInfo.poster_path} 500w" src="https://image.tmdb.org/t/p/w200${movieInfo.poster_path}" sizes="100%" alt="${movieInfo.title}">
+    <h2>${movieInfo.title}</h2>
+<div class="modal__titre">
+      <p>Vote / Votes</p>
+      <p>
+        <span class="accent">${movieInfo.vote_average}</span> /
+        ${movieInfo.vote_count}
+      </p>
+      <p>Popularity</p>
+      <p>${movieInfo.popularity}</p>
+      <p>Original Title</p>
+      <p>${movieInfo.original_title}</p>
+      <p>Genre</p>
+      <p>${genres}</p>
+    </div>    <h3>About</h3>
+    <p>${movieInfo.overview}</p>
+    <button type="button modal__btn">Add to watced</button>
+    <button type="button modal__btn">Add to queue</button>
+  </div>`;
+  // console.log(markup);
+  refs.backdrop.innerHTML = markup;
 }
-// const mongoose = require('mongoose');
-// const mongoosePaginate = require('mongoose-paginate-v2');
-
-// const mySchema = new mongoose.Schema({
-//   /* your schema definition */
-// });
-
-// mySchema.plugin(mongoosePaginate);
-
-// const myModel = mongoose.model('SampleModel', mySchema);
-
-// myModel.paginate().then({}); // Usage
