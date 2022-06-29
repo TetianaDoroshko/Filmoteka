@@ -1,0 +1,19 @@
+.button {
+  display: block;
+  height: 44px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  background-color: transparent;
+  color: #000000;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button:active {
+  color: #ffffff;
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+}

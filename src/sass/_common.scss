@@ -5,6 +5,9 @@ body {
   font-size: 14px;
   line-height: 1.14;
 }
+body.is-hidden {
+  overflow: hidden;
+}
 .container {
   min-width: 320px;
   max-width: 480px;

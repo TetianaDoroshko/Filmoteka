@@ -7,9 +7,15 @@
   padding: 20px;
 
   background-color: #00000020;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  overflow-y: auto;
+
+  @media (min-width: 768px) {
+    padding-top: 219px;
+  }
+  @media (min-width: 1280px) {
+    padding-top: 150px;
+  }
 }
 .backdrop.hidden {
   display: none;

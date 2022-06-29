@@ -27,7 +27,7 @@
 .navigation__actions {
   display: flex;
 }
-.button {
+.navigation__page {
   display: block;
   padding: 20px 0;
   margin-right: 40px;
@@ -38,7 +38,7 @@
   font-size: 12px;
   line-height: 1.17;
 }
-.button--last {
+.navigation__page--last {
   margin-right: 0px;
 }
 .current {
@@ -84,4 +84,5 @@
 .header__info {
   margin-top: 16px;
   color: #ff001b;
+  text-align: center;
 }

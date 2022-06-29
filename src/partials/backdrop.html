@@ -1,29 +1,20 @@
 <div class="backdrop hidden">
   <!-- <div class="modal">
     <button type="button" class="btn-close"></button>
-    <img
-      class="modal__img"
-      srcset="
-        https://image.tmdb.org/t/p/w300${movieInfo.poster_path} 300w,
-        https://image.tmdb.org/t/p/w500${movieInfo.poster_path} 500w
-      "
-      src="https://image.tmdb.org/t/p/w200${movieInfo.poster_path}"
-      sizes="100%"
-      alt="${movieInfo.title}"
-    />
-    <h2>${movieInfo.title}</h2>
-    <div class="modal__titre">
-      <p>Vote / Votes</p>
-      <p>Popularity</p>
-      <p>Original Title</p>
-      <p>Genre</p>
+    <img class="modal__img" srcset="https://image.tmdb.org/t/p/w300${movieInfo.poster_path} 300w, https://image.tmdb.org/t/p/w500${movieInfo.poster_path} 500w" src="https://image.tmdb.org/t/p/w200${movieInfo.poster_path}" sizes="100%" alt="${movieInfo.title}">
+    <h2 class="modal__title">${movieInfo.title}</h2>
+      <div class="modal__rate">
+      <p class="modal__descr">Vote / Votes</p>
       <p>
         <span class="accent">${movieInfo.vote_average}</span> /
         ${movieInfo.vote_count}
       </p>
+      <p class="modal__descr">Popularity</p>
       <p>${movieInfo.popularity}</p>
+      <p class="modal__descr">Original Title</p>
       <p>${movieInfo.original_title}</p>
-      <p>${genres}</p>
+      <p class="modal__descr">Genre</p>
+      <p class="modal__descr">${genres}</p>
     </div>
     <h3>About</h3>
     <p>${movieInfo.overview}</p>
